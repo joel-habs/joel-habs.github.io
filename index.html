@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guía rápida para empadronarse en la junta de distrito">
+    <title>Guía Empadronamiento</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #f8f9fa;
+            --gray: #5a6268; /* Cambiado a un gris más oscuro */
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--secondary);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .step {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .step-content {
+            margin-left: 3.5rem;
+        }
+
+        .locations {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .location-card {
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .location-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .tip {
+            background-color: #e8f4f8;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin: 1rem 0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .tip-icon {
+            color: var(--primary);
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .tip-text {
+            font-style: italic;
+            color: var(--gray);
+            font-weight: 500; /* Añadido para mejor visibilidad */
+        }
+
+        .documents {
+            margin: 1rem 0;
+        }
+
+        .document-list {
+            list-style-type: none;
+        }
+
+        .document-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .document-item:last-child {
+            border-bottom: none;
+        }
+
+        .document-icon {
+            color: var(--primary);
+            margin-right: 0.75rem;
+            margin-top: 0.2rem;
+        }
+
+        .document-details {
+            flex: 1;
+        }
+
+        .document-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .document-description {
+            color: var(--gray);
+            font-size: 0.95rem; /* Tamaño ligeramente mayor */
+            font-weight: 500; /* Añadido peso de fuente para mejor legibilidad */
+            line-height: 1.5;
+        }
+
+        .sub-list {
+            margin-top: 0.5rem;
+            padding-left: 1.5rem;
+            list-style-type: disc;
+        }
+
+        .sub-list li {
+            margin-bottom: 0.25rem;
+            color: var(--gray);
+            font-weight: 500; /* Mejor visibilidad para elementos de sublista */
+        }
+
+        .warning-box {
+            background-color: #fff8e6;
+            border-left: 4px solid var(--warning);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .warning-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .warning-icon {
+            color: var(--warning);
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+        }
+
+        .warning-title {
+            color: #856404;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .warning-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin: 1rem auto;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            display: block;
+        }
+
+        .contact-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid var(--success);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            color: var(--success);
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+        }
+
+        .contact-title {
+            color: #155724;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .link-icon {
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .content {
+                padding: 1.5rem;
+            }
+            
+            .header {
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .step-content {
+                margin-left: 0;
+            }
+            
+            .step-header {
+                margin-bottom: 1.5rem;
+            }
+            
+            .locations {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content {
+                padding: 1rem;
+            }
+            
+            .header {
+                padding: 1.25rem;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .step-title {
+                font-size: 1.2rem;
+            }
+            
+            .step-number {
+                width: 2rem;
+                height: 2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Guía de Empadronamiento</h1>
+            <p>Todo lo que necesitas saber para empadronarte.</p>
+        </div>
+        
+        <div class="content">
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h2 class="step-title">Ve a la junta de distrito más cercana</h2>
+                </div>
+                <div class="step-content">
+                    <div class="tip">
+                        <div class="tip-icon">💡</div>
+                        <div class="tip-text">También puedes ir al ayuntamiento, pero suele haber más cola</div>
+                    </div>
+                    
+                    <div class="locations">
+                        <div class="location-card">
+                            <div class="location-title">Junta de Distrito Centro</div>
+							<div class="document-description">C. de San Antonio, 2, 28931 Móstoles</div>
+                            <a href="https://maps.app.goo.gl/N41uXKE53wB6e4dj7">
+                                Ver en mapa <span class="link-icon">→</span>
+                            </a>
+                        </div>
+                        <div class="location-card">
+                            <div class="location-title">Junta de Distrito Sur-Este</div>
+							<div class="document-description">C. de la Libertad, 34 Post., 28937 Móstoles</div>
+                            <a href="https://maps.app.goo.gl/P4YPB89da4zRT2eM8">
+                                Ver en mapa <span class="link-icon">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h2 class="step-title">Documentación necesaria</h2>
+                </div>
+                <div class="step-content">
+                    <div class="documents">
+                        <ul class="document-list">
+                            <li class="document-item">
+                                <div class="document-icon">📄</div>
+                                <div class="document-details">
+                                    <div class="document-title">Contrato de alquiler</div>
+                                    <div class="document-description">Si te preguntan por la referencia catastral, viene indicada debajo del título del contrato</div>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-icon">🆔</div>
+                                <div class="document-details">
+                                    <div class="document-title">Tu documento de identidad (original)</div>
+                                    <div class="document-description">DNI, NIE o pasaporte</div>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-icon">📋</div>
+                                <div class="document-details">
+                                    <div class="document-title">Copia del documento de identidad</div>
+                                    <div class="document-description">Piden una copia del tuyo y del mío, ambas están en la penúltima página del contrato</div>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-icon">💰</div>
+                                <div class="document-details">
+                                    <div class="document-title">Justificante del depósito de la fianza</div>
+                                    <div class="document-description">Debes indicarles que el mismo contrato sirve como justificante, y que lean la cláusula 5 donde esto se establece.</div>
+                                    <ul class="sub-list">
+                                        <li>Si pagaste en efectivo, deben aceptar el contrato como justificante </li>
+                                        <li>Si pagaste por transferencia, lleva también el justificante bancario </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h2 class="step-title">En la junta de distrito</h2>
+                </div>
+                <div class="step-content">
+                    <div class="documents">
+                        <ul class="document-list">
+                            <li class="document-item">
+                                <div class="document-icon">👥</div>
+                                <div class="document-details">
+                                    <div class="document-title">Haz cola</div>
+                                    <div class="document-description">Una vez llegue tu turno, indica que eres arrendatario de una vivienda y quieres empadronarte</div>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-icon">📂</div>
+                                <div class="document-details">
+                                    <div class="document-title">Entrega los documentos</div>
+                                    <div class="document-description">Te pedirán los documentos del paso 2 progresivamente</div>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-icon">✍️</div>
+                                <div class="document-details">
+                                    <div class="document-title">Rellena el formulario que te darán</div>
+                                    <div class="document-description">Ellos te indicarán que casillas debes rellenar. <a href="https://imgur.com/a/Tuwd7YG">Puedes ver el formulario de empadronamiento al completo pinchando aquí</span>
+                            </a></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <div class="warning-header">
+                    <div class="warning-icon">⚠️</div>
+                    <h3 class="warning-title">Importante saber del formulario</h3>
+                </div>
+                <img src="no_rellenar.png" alt="Foto del formulario - zona de autorización" class="warning-image">
+                <p>La persona que te atiende te puede pedir que se rellene la casilla de "autorización en caso de no ser propietario/arrendatario de la vivienda".</p>
+                <p style="margin-top: 1rem;">En caso de que lo haga, debes indicarle claramente que eres <strong>arrendatario</strong> (tal y como pone en el contrato), por lo que <strong>no necesitas que yo (el propietario) te autorice</strong>.</p>
+            </div>
+            
+            <div class="contact-box">
+                <div class="contact-header">
+                    <div class="contact-icon">📱</div>
+                    <h3 class="contact-title">¿Tienes algún problema?</h3>
+                </div>
+                <p>Escríbeme por WhatsApp directamente.</p>
+                <p style="margin-top: 1rem;">Los funcionarios a veces desconocen el proceso, pero todo lo indicado es exactamente lo que necesitas.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
